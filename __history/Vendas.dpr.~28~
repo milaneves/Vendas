@@ -1,0 +1,28 @@
+program Vendas;
+
+uses
+  Forms,
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uTelaHeranca in 'Heranca\uTelaHeranca.pas' {frmTelaHeranca},
+  uCadCategoria in 'Cadastro\uCadCategoria.pas' {frmCadCategoria},
+  Enter in 'Terceiros\Enter.pas',
+  uEnum in 'Heranca\uEnum.pas',
+  cCadCategoria in 'Classes\cCadCategoria.pas',
+  cCadCliente in 'Classes\cCadCliente.pas',
+  uCadCliente in 'Cadastro\uCadCliente.pas' {frmCadCliente},
+  uDataModuleConexao in 'DataModule\uDataModuleConexao.pas' {dtmConexaoPrincipal: TDataModule},
+  uCadProduto in 'Cadastro\uCadProduto.pas' {frmCadProduto},
+  cCadProduto in 'Classes\cCadProduto.pas',
+  uFrmAtualizaDB in 'DataModule\uFrmAtualizaDB.pas' {frmAtualizaDB},
+  uDataModuleVenda in 'DataModule\uDataModuleVenda.pas' {dtmVenda: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmAtualizaDB, frmAtualizaDB);
+  Application.CreateForm(TdtmVenda, dtmVenda);
+  Application.Run;
+end.

@@ -1,0 +1,189 @@
+inherited frmCadCliente: TfrmCadCliente
+  Caption = 'Cadastro de Cliente'
+  ClientHeight = 647
+  ClientWidth = 910
+  ExplicitWidth = 916
+  ExplicitHeight = 676
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pgPrincipal: TPageControl
+    Width = 910
+    Height = 606
+    ActivePage = tabManutencao
+    inherited tabListagem: TTabSheet
+      inherited pnListagem: TPanel
+        Width = 902
+      end
+      inherited grdListagem: TDBGrid
+        Left = 0
+      end
+    end
+    inherited tabManutencao: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 22
+      ExplicitWidth = 902
+      ExplicitHeight = 578
+      object lblCEP: TLabel
+        Left = 520
+        Top = 95
+        Width = 19
+        Height = 13
+        Caption = 'CEP'
+      end
+      object lblTelefone: TLabel
+        Left = 526
+        Top = 196
+        Width = 42
+        Height = 13
+        Caption = 'Telefone'
+      end
+      object lblDtNascimento: TLabel
+        Left = 36
+        Top = 293
+        Width = 81
+        Height = 13
+        Caption = 'Data Nascimento'
+      end
+      object edtCategoriaId: TLabeledEdit
+        Tag = 2
+        Left = 38
+        Top = 56
+        Width = 121
+        Height = 21
+        EditLabel.Width = 33
+        EditLabel.Height = 13
+        EditLabel.Caption = 'C'#243'digo'
+        MaxLength = 10
+        NumbersOnly = True
+        TabOrder = 0
+      end
+      object LabeledEdit1: TLabeledEdit
+        Tag = 1
+        Left = 36
+        Top = 114
+        Width = 478
+        Height = 21
+        EditLabel.Width = 46
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Descri'#231#227'o'
+        MaxLength = 60
+        TabOrder = 1
+      end
+      object edtCEP: TMaskEdit
+        Tag = 1
+        Left = 520
+        Top = 114
+        Width = 197
+        Height = 21
+        EditMask = '99.999-999;1;_'
+        MaxLength = 10
+        TabOrder = 2
+        Text = '  .   -   '
+      end
+      object edtEndereco: TLabeledEdit
+        Tag = 1
+        Left = 36
+        Top = 164
+        Width = 480
+        Height = 21
+        EditLabel.Width = 45
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Endere'#231'o'
+        MaxLength = 60
+        TabOrder = 3
+      end
+      object edtBairro: TLabeledEdit
+        Tag = 1
+        Left = 522
+        Top = 164
+        Width = 197
+        Height = 21
+        EditLabel.Width = 28
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Bairro'
+        MaxLength = 40
+        TabOrder = 4
+      end
+      object edtCidade: TLabeledEdit
+        Tag = 1
+        Left = 36
+        Top = 215
+        Width = 416
+        Height = 21
+        EditLabel.Width = 33
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Cidade'
+        MaxLength = 30
+        TabOrder = 5
+      end
+      object edtTelefone: TMaskEdit
+        Tag = 1
+        Left = 526
+        Top = 214
+        Width = 198
+        Height = 21
+        EditMask = '(99)9999-9999;'
+        MaxLength = 13
+        TabOrder = 6
+        Text = '(  )    -    '
+      end
+      object edtEmail: TLabeledEdit
+        Tag = 1
+        Left = 36
+        Top = 263
+        Width = 484
+        Height = 21
+        EditLabel.Width = 24
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Email'
+        MaxLength = 30
+        TabOrder = 7
+      end
+      object edtDtNascimento: TDateTimePicker
+        Tag = 1
+        Left = 36
+        Top = 312
+        Width = 91
+        Height = 21
+        Date = 44056.403842557870000000
+        Time = 44056.403842557870000000
+        TabOrder = 8
+      end
+      object edtEstado: TLabeledEdit
+        Tag = 1
+        Left = 458
+        Top = 215
+        Width = 58
+        Height = 21
+        EditLabel.Width = 33
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Estado'
+        MaxLength = 2
+        TabOrder = 9
+      end
+    end
+  end
+  inherited pnRodape: TPanel
+    Top = 606
+    Width = 910
+    inherited DBNavigator: TDBNavigator
+      Hints.Strings = ()
+    end
+  end
+  inherited btnCancelar: TBitBtn
+    Top = 612
+    ExplicitTop = 612
+  end
+  inherited brnFechar: TBitBtn
+    Left = 825
+    Top = 601
+    ExplicitLeft = 825
+    ExplicitTop = 368
+  end
+  inherited btnApagar: TBitBtn
+    Left = 340
+    Top = 612
+    ExplicitLeft = 340
+    ExplicitTop = 612
+  end
+end

@@ -1,0 +1,139 @@
+unit uPrincipal;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus,Enter,uDataModuleConexao, uCadCategoria, uCadCliente, uCadProduto,
+  uFrmAtualizaDB;
+
+type
+  TfrmPrincipal = class(TForm)
+    mainPrincipal: TMainMenu;
+    CADASTRO1: TMenuItem;
+    MOVIMENTACAO1: TMenuItem;
+    RELATRIOS1: TMenuItem;
+    CLIENTE1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    PRODUTO1Click: TMenuItem;
+    N3: TMenuItem;
+    menuFechar: TMenuItem;
+    VENDAS1: TMenuItem;
+    CLIENTE2: TMenuItem;
+    N4: TMenuItem;
+    PRODUTO1: TMenuItem;
+    N5: TMenuItem;
+    VENDAPORDATA1: TMenuItem;
+    CATEGORIA1: TMenuItem;
+    procedure menuFecharClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure CLIENTE1Click(Sender: TObject);
+    procedure PRODUTO1ClickClick(Sender: TObject);
+    procedure CATEGORIA1Click(Sender: TObject);
+  private
+    { Private declarations }
+    TeclaEnter:TMREnter;
+    procedure AtualizacaoBancoDados(aForm: TfrmAtualizaDB);
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+{$R *.dfm}
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ FreeAndNil(TeclaEnter);
+ FreeAndNil(dtmConexaoPrincipal);
+end;
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+
+  frmAtualizaDB:=TfrmAtualizaDB.Create(self);
+  frmAtualizaDB.Show;
+  frmAtualizaDB.Refresh;
+
+//criando a variavel conexão sobre o formulario principal
+ dtmConexaoPrincipal:=TdtmConexaoPrincipal.Create(Self);
+
+ with dtmConexaoPrincipal.ConexaoDB do
+  begin
+      SQLHourGlass:= false;
+      Protocol:= 'mssql';
+      LibraryLocation:= 'C:\Users\Araujo\Documents\PROJETOS\vendas\Vendas-master\ntwdblib';
+      HostName:= '.\SQLEXPRESS';
+      Port:= 1433;
+      User:= '';
+      Password:= '';
+      Database:= 'vendas';
+      //conexão com o banco de dados
+      Connected:= True;
+
+  end;
+    AtualizacaoBancoDados(frmAtualizaDB);
+    TeclaEnter:=TMREnter.Create(Self);
+    TeclaEnter.FocusEnabled:=true;
+    TeclaEnter.FocusColor:=clInfoBK;
+end;
+
+
+procedure TfrmPrincipal.CATEGORIA1Click(Sender: TObject);
+begin
+   frmCadCategoria:=TfrmCadCategoria.Create(Self);
+   frmCadCategoria.ShowModal;
+   frmCadCategoria.Release;
+end;
+
+procedure TfrmPrincipal.CLIENTE1Click(Sender: TObject);
+begin
+   frmCadCliente:=TfrmCadCliente.Create(Self);
+   frmCadCliente.ShowModal;
+   frmCadCliente.Release;
+end;
+
+procedure TfrmPrincipal.PRODUTO1ClickClick(Sender: TObject);
+begin
+  frmCadProduto:=TfrmCadProduto.Create(Self);
+  frmCadProduto.ShowModal;
+  frmCadProduto.Release;
+end;
+
+procedure TfrmPrincipal.menuFecharClick(Sender: TObject);
+begin
+    Close;
+end;
+
+procedure TfrmPrincipal.AtualizacaoBancoDados(aForm: TfrmAtualizaDB );
+begin
+ aForm.chkConexaoBD.Checked:=true;
+ aForm.Refresh;
+
+ dtmConexaoPrincipal.QryScriptCategorias.ExecSQL;
+ aForm.chkCategoria.Checked:=true;
+ aForm.Refresh;
+ Sleep(100);
+
+ dtmConexaoPrincipal.QryScriptClientes.ExecSQL;
+ aForm.chkProduto.Checked:=true;
+ aForm.Refresh;
+ Sleep(100);
+
+ dtmConexaoPrincipal.QryScriptProduto.ExecSQL;
+ aForm.chkVendas.Checked:=true;
+ aForm.Refresh;
+ Sleep(100);
+
+ dtmConexaoPrincipal.QryScriptVendas.ExecSQL;
+ aForm.chkItensVendas.Checked:=true;
+ aForm.Refresh;
+ Sleep(100);
+ dtmConexaoPrincipal.QryScriptItensVendas.ExecSQL;
+end;
+
+end.

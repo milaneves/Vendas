@@ -1,0 +1,23 @@
+unit uDataModuleConexao;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  TdtmConexao = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dtmConexao: TdtmConexao;
+
+implementation
+
+{$R *.dfm}
+
+end.
