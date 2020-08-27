@@ -1,10 +1,14 @@
 inherited frmProVenda: TfrmProVenda
   Caption = 'Venda'
-  ExplicitTop = -303
+  ExplicitTop = -367
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgPrincipal: TPageControl
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 989
+      ExplicitHeight = 636
       inherited grdListagem: TDBGrid
         Columns = <
           item
@@ -35,6 +39,10 @@ inherited frmProVenda: TfrmProVenda
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 989
+      ExplicitHeight = 636
       object lblCliente: TLabel
         Left = 129
         Top = 53
@@ -96,7 +104,7 @@ inherited frmProVenda: TfrmProVenda
           Height = 452
           Align = alClient
           TabOrder = 0
-          object DBGrid1: TDBGrid
+          object dbgridItensVenda: TDBGrid
             Left = 1
             Top = 1
             Width = 985
@@ -109,6 +117,7 @@ inherited frmProVenda: TfrmProVenda
             TitleFont.Height = -11
             TitleFont.Name = 'Tahoma'
             TitleFont.Style = []
+            OnDblClick = dbgridItensVendaDblClick
             Columns = <
               item
                 Expanded = False
@@ -209,7 +218,7 @@ inherited frmProVenda: TfrmProVenda
             ReadOnly = True
             TabOrder = 3
           end
-          object btnAdicionar: TBitBtn
+          object btnAdicionarItem: TBitBtn
             Left = 649
             Top = 13
             Width = 88
@@ -243,9 +252,9 @@ inherited frmProVenda: TfrmProVenda
               17BF6F17FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
               00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
             TabOrder = 4
-            OnClick = btnAdicionarClick
+            OnClick = btnAdicionarItemClick
           end
-          object btnRemover: TBitBtn
+          object btnRemoverItem: TBitBtn
             Left = 743
             Top = 13
             Width = 87
@@ -281,6 +290,7 @@ inherited frmProVenda: TfrmProVenda
               00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
             TabOrder = 5
             TabStop = False
+            OnClick = btnRemoverItemClick
           end
         end
         object Panel4: TPanel
@@ -323,6 +333,7 @@ inherited frmProVenda: TfrmProVenda
     end
   end
   inherited pnRodape: TPanel
+    ExplicitTop = 664
     inherited DBNavigator: TDBNavigator
       Hints.Strings = ()
     end
